@@ -23,6 +23,16 @@ class LinkedList
     new_node.next_node = @head
     @head = new_node
   end
+
+  def size
+    counter = 0
+    current_node = @head
+    while current_node
+      counter += 1 if current_node.value
+      current_node = current_node.next_node
+    end
+    counter
+  end
 end
 
 class Node
