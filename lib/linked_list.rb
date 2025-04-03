@@ -53,6 +53,20 @@ class LinkedList
       counter += 1
     end
   end
+
+  def pop
+    last_node = self.tail
+    @head = nil if @head == last_node
+    current_node = @head
+    while current_node
+      if current_node.next_node == last_node
+        current_node.next_node = nil
+        return last_node
+      end
+      current_node = current_node.next_node
+    end
+    last_node
+  end
 end
 
 class Node
