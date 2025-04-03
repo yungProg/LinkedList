@@ -43,6 +43,16 @@ class LinkedList
       current_node = current_node.next_node
     end
   end
+
+  def at(index)
+    current_node = @head
+    counter = 0
+    while current_node
+      return current_node if index == counter
+      current_node = current_node.next_node
+      counter += 1
+    end
+  end
 end
 
 class Node
