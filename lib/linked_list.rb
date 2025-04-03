@@ -1,4 +1,5 @@
 class LinkedList
+  #method to return first node in the list
   attr_accessor :head
 
   def initialize
