@@ -87,6 +87,25 @@ class LinkedList
     end
   end
 
+  def insert_at(value, index)
+    return prepend(value) if index == 0
+    new_node = Node.new(value)
+    counter = 0
+    current_node = @head
+    breakpoint = nil
+    while current_node
+      if index == counter + 1
+        breakpoint = current_node.next_node
+        current_node.next_node = new_node
+        current_node = current_node.next_node
+        break
+      end
+      current_node = current_node.next_node
+      counter += 1
+    end
+    current_node.next_node = breakpoint if breakpoint
+  end
+
   def to_s
     output = ''
     current_node = @head
@@ -106,3 +125,14 @@ class Node
     @next_node = nil
   end
 end
+
+list = LinkedList.new
+
+list.append('dog')
+list.append('cat')
+list.append('rabbit')
+list.append('bird')
+
+list.insert_at('horse', 1)
+
+puts list
