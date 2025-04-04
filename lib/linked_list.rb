@@ -109,6 +109,29 @@ class LinkedList
     current_node.next_node = breakpoint if breakpoint
   end
 
+  def remove_at(index)
+    current_node = @head
+    if index == 0
+      current_node = current_node.next_node
+      @head = nil
+      @head = current_node
+      return
+    end
+    counter = 0
+    breakpoint = nil
+    while current_node
+      if index == (counter + 1)
+        breakpoint = current_node.next_node
+        current_node.next_node = nil
+        current_node.next_node = breakpoint.next_node
+        break
+      end
+      return unless current_node.next_node
+      current_node = current_node.next_node
+      counter += 1
+    end
+  end
+
   def to_s
     output = ''
     current_node = @head
