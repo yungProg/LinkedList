@@ -94,13 +94,16 @@ class LinkedList
     current_node = @head
     breakpoint = nil
     while current_node
+      unless current_node.next_node
+        breakpoint = new_node
+        break
+      end
       if index == counter + 1
         breakpoint = current_node.next_node
         current_node.next_node = new_node
-        current_node = current_node.next_node
-        break
       end
       current_node = current_node.next_node
+      break if new_node == current_node
       counter += 1
     end
     current_node.next_node = breakpoint if breakpoint
@@ -125,14 +128,3 @@ class Node
     @next_node = nil
   end
 end
-
-list = LinkedList.new
-
-list.append('dog')
-list.append('cat')
-list.append('rabbit')
-list.append('bird')
-
-list.insert_at('horse', 1)
-
-puts list
